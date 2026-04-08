@@ -1,6 +1,8 @@
 # Tip Calculator
 
 A simple and responsive tip calculator built with plain HTML, CSS, and JavaScript.
+# Live link 
+--> https://suman-max10.github.io/Calculator/
 
 ## Features
 
