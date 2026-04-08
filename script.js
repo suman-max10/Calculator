@@ -1,30 +1,37 @@
+// Recalculate whenever slider values change.
 const sliders = document.querySelectorAll("input[type='range']");
 sliders.forEach(function(slider){
     slider.addEventListener("input",calculateTip)
+    
 });
 
+//Recalculate when bill input value is committed.
 const billInput = document.getElementById("bill");
 billInput.addEventListener("change",calculateTip);
 
 
 function calculateTip(){
 
+    //Read current input values.
     let bill = parseFloat(billInput.value);
     let tipPercent = document.getElementById("tip").value; 
     let noOfPeople = document.getElementById("no-of-people").value;
 
     billInput.value = bill.toFixed(2);
 
+    // Calculate tip and total bill amounts.
     let totalTip = parseFloat((bill * (tipPercent/100)).toFixed(2));
                                         
 
 
     let total = parseFloat((bill + totalTip).toFixed(2))
 
+    // Split totals across people.
     let tipPerPerson = (totalTip/noOfPeople).toFixed(2)
 
     let totalPerPerson = (total/noOfPeople).toFixed(2)
 
+    // Update the result fields in the Frontend part.
     document.getElementById("tip-amount").textContent = `$${totalTip}`;
 
     document.getElementById("total-amount").textContent = `$${total}`;
@@ -39,5 +46,6 @@ function calculateTip(){
 
 }
 
+// Initialize values on Starting page load.
 calculateTip();
 
